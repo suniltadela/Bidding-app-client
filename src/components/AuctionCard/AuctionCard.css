@@ -1,0 +1,91 @@
+/* AuctionCard.css */
+
+.auction-card {
+    display: flex;                     /* Use flexbox for layout */
+    flex-direction: column;           /* Stack children vertically */
+    border: 1px solid #e0e0e0;       /* Light border */
+    border-radius: 8px;              /* Rounded corners */
+    overflow: hidden;                 /* Clip children */
+    background-color: #ffffff;       /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s;      /* Smooth scaling */
+    margin: 10px;                    /* Margin between cards */
+    max-width: 300px;                /* Max width for the card */
+  }
+  
+  .auction-card:hover {
+    transform: translateY(-5px);     /* Lift effect on hover */
+  }
+  
+  .auction-card img {
+    width: 100%;                     /* Image fills the width */
+    height: 180px;                  /* Fixed height for images */
+    object-fit: cover;              /* Cover aspect ratio */
+  }
+  
+  .auction-details {
+    display: flex;                   /* Use flex for detail section */
+    flex-direction: column;         /* Stack title, price, and button */
+    justify-content: space-between; /* Space out items */
+    padding: 15px;                  /* Space around the details */
+  }
+  
+  .live-auction {
+    background-color: rgba(144, 238, 144, 0.8); /* Light green background */
+    color: #333;                    /* Dark text color */
+    padding: 5px;                   /* Padding for the label */
+    border-radius: 4px;             /* Rounded corners */
+    align-self: flex-start;         /* Align to the start */
+    font-weight: bold;               /* Bold text */
+  }
+  
+  .auction-card h3 {
+    font-size: 1.2rem;              /* Title font size */
+    margin: 10px 0;                 /* Space around title */
+    color: #333;                    /* Dark color for title */
+  }
+  
+  .bids {
+    display: flex;
+    flex-direction: column;                  /* Flexbox for bids layout */
+    justify-content: space-around; 
+    margin: 5px 0;                  /* Space around bids */
+  }
+  
+  .min-bid {
+    font-size: 1rem; 
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;               /* Font size for current bid */
+    color: black;                 /* Color for current bid (green) */              /* Bold text for current bid */
+    margin-top: 5px;                  /* Color for minimum bid */              /* Bold text for minimum bid */
+  }
+  
+  .current-bid {
+    font-size: 1rem; 
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;               /* Font size for current bid */
+    color: black;                 /* Color for current bid (green) */              /* Bold text for current bid */
+    margin-top: 5px;                /* Space above current bid */
+  }
+  
+  /* Button Styling */
+  .auction-card button {
+    background: linear-gradient(to right, #ff0000, #007bff); /* Gradient from red to blue */
+    color: white;                    /* Text color */
+    padding: 10px 15px;             /* Adjusted padding for a more compact button */
+    border: none;                    /* No border */
+    border-radius: 5px;             /* Rounded corners */
+    cursor: pointer;                 /* Pointer on hover */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for background and transform */
+    margin-top: 10px;               /* Space above button */
+    font-size: 1rem;                /* Button font size */
+    width: 100%;                    /* Full width of the parent */
+    text-align: center;             /* Center text inside the button */
+  }
+  
+  .auction-card button:hover {
+    transform: scale(1.05);         /* Slightly scale up on hover */
+  }
+  

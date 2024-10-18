@@ -1,0 +1,90 @@
+/* AuctionDetails.css */
+
+/* Renamed class to avoid conflicts */
+.auction-details-container {
+    display: grid;                              /* Use grid for layout */
+    grid-template-columns: 1fr 2fr 1fr;         /* Three columns: 1fr (image), 2fr (details), 1fr (button) */
+    grid-gap: 20px;                             /* Gap between columns */
+    padding: 20px;
+    background-color: #ffffff;                  /* White background */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+    max-width: 1000px;                          /* Limit max width */
+    margin: 0 auto;                             /* Center the content */
+  }
+  
+  /* First column: Auction image */
+  .auction-details-header {
+    grid-column: 1 / 2; /* Place this in the first column */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .auction-details-header img {
+    width: 100%;
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 15px;
+  }
+  
+  .auction-details-header h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+  }
+  
+  /* Second column: Description and Reviews */
+  .auction-description,
+  .auction-reviews {
+    grid-column: 2 / 3; /* Place these in the second column */
+  }
+  
+  .auction-description h4,
+  .auction-reviews h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .auction-description p,
+  .auction-reviews p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+  
+  /* Third column: Bid Now button */
+  .bid-now-button {
+    grid-column: 3 / 4; /* Place button in the third column */
+    align-self: center; /* Vertically center the button */
+    justify-self: center; /* Horizontally center the button */
+    background: linear-gradient(to right, #ff0000, #007bff); /* Gradient from red to blue */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    text-transform: uppercase;
+  }
+  
+  .bid-now-button:hover {
+    transform: scale(1.05);
+    background-color: #0056b3;
+  }
+  
+  /* Responsive layout: For smaller screens */
+  @media (max-width: 768px) {
+    .auction-details-container {
+      grid-template-columns: 1fr; /* Stack all columns vertically */
+    }
+  
+    .bid-now-button {
+      grid-column: 1 / -1; /* Ensure button is full width on small screens */
+      justify-self: center; /* Center the button */
+      width: 100%;          /* Make button take full width */
+    }
+  }
+  

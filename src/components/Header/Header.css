@@ -1,0 +1,68 @@
+/* Header.css */
+
+* {
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+  }
+  
+  body {
+    margin: 0; /* Ensure no default margin on the body */
+  }
+  
+  .header {
+    display: flex;                           /* Use flexbox for layout */
+    justify-content: space-between;          /* Space between logo and nav */
+    align-items: center;                     /* Center items vertically */
+    padding: 15px 30px;                      /* Padding around the header */
+    background-color: #f8d3d3;               /* Light pink background */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    position: sticky;                        /* Make the header sticky */
+    top: 0;                                  /* Stick to the top */
+    z-index: 1000;                          /* Ensure it stays above other content */
+    width: 100%;                             /* Set the width to 100% of the viewport */
+    overflow: hidden;                        /* Prevent overflow */
+  }
+  
+  .logo {
+    font-size: 28px;                        /* Font size for the logo */
+    font-weight: bold;                      /* Bold text for the logo */
+    color: #333;                            /* Dark text color */
+  }
+  
+  .nav-links {
+    list-style: none;                       /* Remove bullets */
+    display: flex;                          /* Use flexbox for links */
+    gap: 25px;                              /* Space between links */
+  }
+  
+  .nav-links li {
+    display: inline;                         /* Display links inline */
+  }
+  
+  .nav-links a {
+    text-decoration: none;                   /* Remove underline from links */
+    color: #333;                            /* Dark color for links */
+    font-weight: 500;                       /* Medium font weight */
+    transition: color 0.3s, border-bottom 0.3s; /* Smooth transition for hover */
+    position: relative;                     /* Position relative for the pseudo-element */
+  }
+  
+  .nav-links a:hover {
+    color: #007bff;                         /* Change color on hover */
+  }
+  
+  .nav-links a::after {
+    content: "";                            /* Empty content for underline */
+    display: block;                         /* Block element */
+    width: 0;                               /* Initial width */
+    height: 2px;                            /* Height of the underline */
+    background: #007bff;                   /* Color of the underline */
+    transition: width 0.3s;                /* Smooth width transition */
+    position: absolute;                     /* Position absolute */
+    left: 0;                                /* Align to the left */
+    bottom: -5px;                           /* Position it below the text */
+  }
+  
+  .nav-links a:hover::after {
+    width: 100%;                            /* Full width on hover */
+  }
+  
