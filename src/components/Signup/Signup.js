@@ -1,66 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';  // useNavigate for redirect
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import './Signup.css';
 import { register } from '../../services/authService';
 
 const Signup = () => {
-  const [formData, setFormData] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: '',
+  const navigate = useNavigate();
+
+  const formik = useFormik({
+    initialValues: {
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: '',
+    },
+    validationSchema: Yup.object({
+      firstname: Yup.string().required('First name is required'),
+      lastname: Yup.string().required('Last name is required'),
+      email: Yup.string()
+        .email('Invalid email address')
+        .required('Email is required'),
+      password: Yup.string()
+        .min(6, 'Password must be at least 6 characters long')
+        .required('Password is required'),
+    }),
+    onSubmit: async (values, { setSubmitting, setErrors, setStatus }) => {
+      try {
+        await register(values.firstname, values.lastname, values.email, values.password);
+        setStatus({ success: 'Signup successful!' });
+        
+        // Clear form fields
+        formik.resetForm();
+
+        // Redirect after a delay
+        setTimeout(() => {
+          navigate('/login');
+        }, 3000);
+      } catch (error) {
+        setErrors({ submit: 'Signup failed. Please try again.' });
+      } finally {
+        setSubmitting(false);
+      }
+    },
   });
-
-  const [successMessage, setSuccessMessage] = useState('');  // Success message state
-  const [errorMessage, setErrorMessage] = useState('');      // Error message state
-  const navigate = useNavigate();  // To redirect after signup
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSignup = async (e) => {
-    e.preventDefault();
-    
-    const { firstname, lastname, email, password } = formData;
-    
-    try {
-      await register(firstname, lastname, email, password);  // Call the register function
-      
-      // Show success message and clear error message
-      setSuccessMessage('Signup successful!');
-      setErrorMessage('');
-
-      // Clear form fields
-      setFormData({
-        firstname: '',
-        lastname: '',
-        email: '',
-        password: '',
-      });
-
-      // After a delay, redirect to login page
-      setTimeout(() => {
-        setSuccessMessage('');  // Clear success message
-        navigate('/login');  // Redirect to login page
-      }, 3000);  // Wait for 3 seconds before redirecting
-
-    } catch (error) {
-      setErrorMessage('Signup failed. Please try again.');
-      setSuccessMessage('');  // Clear any success message if there's an error
-    }
-  };
-
-  useEffect(() => {
-    // If there are any messages, they disappear after 3 seconds
-    const timer = setTimeout(() => {
-      setSuccessMessage('');
-      setErrorMessage('');
-    }, 3000);  // Message disappears after 3 seconds
-
-    // Clean up the timer on component unmount
-    return () => clearTimeout(timer);
-  }, [successMessage, errorMessage]);
 
   return (
     <div className="signup-container">
@@ -69,20 +52,24 @@ const Signup = () => {
         <p>New bidders, fill in your details to get started with the auction.</p>
 
         {/* Display success or error messages */}
-        {successMessage && <p className="success-message">{successMessage}</p>}
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {formik.status?.success && <p className="success-message">{formik.status.success}</p>}
+        {formik.errors.submit && <p className="error-message">{formik.errors.submit}</p>}
 
-        <form onSubmit={handleSignup}>
+        <form onSubmit={formik.handleSubmit}>
           <div className="input-field">
             <label htmlFor="firstname">First Name</label>
             <input
               type="text"
               id="firstname"
               name="firstname"
-              value={formData.firstname}
-              onChange={handleChange}
+              value={formik.values.firstname}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               required
             />
+            {formik.touched.firstname && formik.errors.firstname ? (
+              <div className="error-message">{formik.errors.firstname}</div>
+            ) : null}
           </div>
           <div className="input-field">
             <label htmlFor="lastname">Last Name</label>
@@ -90,10 +77,14 @@ const Signup = () => {
               type="text"
               id="lastname"
               name="lastname"
-              value={formData.lastname}
-              onChange={handleChange}
+              value={formik.values.lastname}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               required
             />
+            {formik.touched.lastname && formik.errors.lastname ? (
+              <div className="error-message">{formik.errors.lastname}</div>
+            ) : null}
           </div>
           <div className="input-field">
             <label htmlFor="email">Email Address</label>
@@ -101,10 +92,14 @@ const Signup = () => {
               type="email"
               id="email"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               required
             />
+            {formik.touched.email && formik.errors.email ? (
+              <div className="error-message">{formik.errors.email}</div>
+            ) : null}
           </div>
           <div className="input-field">
             <label htmlFor="password">Password</label>
@@ -112,13 +107,16 @@ const Signup = () => {
               type="password"
               id="password"
               name="password"
-              value={formData.password}
-              onChange={handleChange}
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               required
             />
-            <p className="password-hint">Password criteria check</p>
+            {formik.touched.password && formik.errors.password ? (
+              <div className="error-message">{formik.errors.password}</div>
+            ) : null}
           </div>
-          <button type="submit" className="signup-button">
+          <button type="submit" className="signup-button" disabled={formik.isSubmitting}>
             Submit
           </button>
         </form>

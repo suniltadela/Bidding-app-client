@@ -41,7 +41,7 @@ export const createAuction = async (auctionData) => {
     const token = localStorage.getItem('authToken'); // Get the token from localStorage
     
     const response = await axios.post(
-      '${process.env.REACT_APP_BASE_URL}/api/auctions',
+      `${process.env.REACT_APP_BASE_URL}/api/auctions`,
       auctionData,
       {
         headers: {
