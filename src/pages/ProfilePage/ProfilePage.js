@@ -5,7 +5,7 @@ import { createAuction, deleteAuction, fetchUserAuctions, updateAuction } from '
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './ProfilePage.css';
-import { FaEdit, FaTrash } from 'react-icons/fa'; // Importing icons
+import { FaEdit, FaTrash, FaTimes } from 'react-icons/fa'; // Importing icons
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -119,7 +119,9 @@ const ProfilePage = () => {
       {isModalOpen && (
         <div className="modal">
           <div className="modal-content">
-            <span className="close" onClick={closeModal}>&times;</span>
+            <span className="close" onClick={closeModal}>
+              <FaTimes />
+            </span>
             <h3>Create New Auction</h3>
             <input type="text" placeholder="Title" value={newAuction.title} onChange={(e) => setNewAuction({ ...newAuction, title: e.target.value })} />
             <textarea placeholder="Description" value={newAuction.description} onChange={(e) => setNewAuction({ ...newAuction, description: e.target.value })} />
