@@ -1,4 +1,75 @@
 /* Profile Page Styles */
+/* Modal Styles */
+.modal {
+  position: fixed;                /* Fixes the modal in place */
+  z-index: 1000;                 /* Ensures modal is on top of other elements */
+  left: 0;                       /* Aligns modal to the left */
+  top: 0;                        /* Aligns modal to the top */
+  width: 100%;                  /* Full width */
+  height: 100%;                 /* Full height */
+  overflow: auto;               /* Enables scrolling if necessary */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex;                /* Flexbox for centering */
+  justify-content: center;      /* Center horizontally */
+  align-items: center;          /* Center vertically */
+}
+
+.modal-content {
+  background-color: #ffffff;    /* White background for modal content */
+  margin: 15% auto;             /* Centers the modal and gives top margin */
+  padding: 20px;                /* Inner spacing */
+  border-radius: 8px;           /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  width: 90%;                   /* Responsive width */
+  max-width: 500px;             /* Maximum width for larger screens */
+  position: relative;           /* Relative positioning for child elements */
+}
+
+.close {
+  position: absolute;            /* Absolute position for the close button */
+  top: 15px;                    /* Distance from the top */
+  right: 15px;                  /* Distance from the right */
+  font-size: 20px;              /* Font size for the close icon */
+  cursor: pointer;               /* Pointer cursor for interaction */
+  color: #888;                   /* Light gray color */
+  transition: color 0.3s;       /* Smooth color transition */
+}
+
+.close:hover {
+  color: red;                   /* Color change on hover for visibility */
+}
+
+.modal h3 {
+  margin-top: 0;                /* Remove top margin for better alignment */
+  font-size: 24px;              /* Size of the modal title */
+  color: #333;                  /* Dark color for the title */
+}
+
+.modal input,
+.modal textarea {
+  width: 100%;                  /* Full width inputs */
+  padding: 10px;                /* Inner spacing */
+  margin: 10px 0;              /* Margin for spacing between elements */
+  border-radius: 4px;          /* Rounded corners */
+  border: 1px solid #ccc;       /* Light border */
+  font-family: inherit;         /* Inherit font for consistency */
+  font-size: 16px;              /* Font size */
+}
+
+.modal button {
+  padding: 10px 15px;           /* Padding for buttons */
+  background-color: #007bff;    /* Bootstrap primary color */
+  color: white;                 /* Text color */
+  border: none;                 /* No border */
+  border-radius: 5px;          /* Rounded corners */
+  cursor: pointer;              /* Pointer cursor for interaction */
+  transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.modal button:hover {
+  background-color: #0056b3;    /* Darken on hover */
+}
+
 .profile-page {
   padding: 20px;
   max-width: 600px;
