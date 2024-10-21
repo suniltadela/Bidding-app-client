@@ -2,30 +2,39 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 import { login } from '../../services/authService';
+import { useDispatch } from 'react-redux'; // Import useDispatch
+import { loginSuccess } from '../../redux/slices/authSlice'; // Import the action to handle successful login
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [loading, setLoading] = useState(false); // State for loading
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch(); // Initialize dispatch
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setLoading(true); // Set loading to true
-    setErrorMessage(''); // Clear previous error message
+    setLoading(true);
+    setErrorMessage('');
     try {
       const response = await login(email, password);
+      console.log(response, 'loginres');
+      
       if (response.token) {
-        localStorage.setItem('authToken', response.token);
-        navigate('/profile');
+        // localStorage.setItem('authToken', response.token);
+        
+        // Dispatch the user data and token to Redux store
+        dispatch(loginSuccess({ user: response.user, token: response.token }));
+
+        navigate('/');
       } else {
         setErrorMessage('Invalid login credentials. Please try again.');
       }
     } catch (error) {
       setErrorMessage('Login failed. Please check your credentials and try again.');
     } finally {
-      setLoading(false); // Reset loading state
+      setLoading(false);
     }
   };
 

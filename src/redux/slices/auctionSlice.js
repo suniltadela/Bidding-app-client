@@ -1,17 +1,17 @@
+// auctionSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const auctionSlice = createSlice({
   name: 'auction',
   initialState: {
-    items: [],
+    items: [], // Default state is an empty array
   },
   reducers: {
     setAuctions(state, action) {
-      state.items = action.payload;
+      state.items = action.payload; // Set auctions to state
     },
   },
 });
 
-export const { setAuctions } = auctionSlice.actions;
-export default auctionSlice.reducer;
-
+export const { setAuctions } = auctionSlice.actions; // Export the action
+export default auctionSlice.reducer; // Export the reducer
