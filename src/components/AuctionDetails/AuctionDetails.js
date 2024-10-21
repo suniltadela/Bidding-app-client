@@ -42,7 +42,7 @@ const AuctionDetails = ({ auction }) => {
       <div className="auction-details-header">
         <img src={auction.imageUrl} alt={auction.title} />
         <h2>{auction.title}</h2>
-        <p>Minimum Bid: ${auction.minimumBid}</p>
+        <p>Minimum Bid: ${auction.startingBid}</p>
         <p>Current Bid: ${currentBid}</p> {/* Display updated current bid */}
       </div>
 
