@@ -19,7 +19,6 @@ const Login = () => {
     setErrorMessage('');
     try {
       const response = await login(email, password);
-      console.log(response, 'loginres');
       
       if (response.token) {
         // localStorage.setItem('authToken', response.token);

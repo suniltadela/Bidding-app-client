@@ -1,19 +1,14 @@
 import axios from 'axios';
 
 export const login = async (email, password) => {
-  const response = await axios.post('http://localhost:3000/api/auth/login', { email, password });
+  const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/auth/login`, { email, password });
   return response.data;
 };
 
-// export const register = async (firstname,lastname , email, password) => {
-//   const response = await axios.post('http://localhost:3000/api/auth/register', { firstname,lastname , email, password });
-//   return response.data;
-// };
 export const register = async (firstname, lastname, email, password) => {
     try {
-      console.log(firstname,lastname,email,password,'checker')
       const response = await axios.post(
-        'http://localhost:3000/api/auth/register',
+        `${process.env.REACT_APP_BASE_URL}/api/auth/register`,
         { firstname, lastname, email, password },
         {
           headers: { 'Content-Type': 'application/json' }, // Ensure correct headers

@@ -1,38 +1,153 @@
+/* Profile Page Styles */
 .profile-page {
-    padding: 20px;
-    max-width: 600px;
-    margin: auto;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }
-  
-  .profile-page h2 {
-    font-size: 24px;
-    color: #333;
-  }
-  
-  .profile-page p {
-    font-size: 16px;
-    color: #666;
-  }
-  
-  .profile-page h3 {
-    margin-top: 20px;
-    font-size: 20px;
-    color: #555;
-  }
-  
-  .profile-page ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .profile-page li {
-    background: #e3f2fd;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #2196f3;
-  }
-  
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.profile-page h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+.profile-page p {
+  font-size: 16px;
+  color: #666;
+}
+
+.profile-page h3 {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #555;
+}
+
+.open-modal-btn {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.open-modal-btn:hover {
+  background-color: #218838;
+}
+
+/* Auction List Styles */
+.auction-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Unique Auction Card Styles */
+.auction-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%; /* Allow cards to take full width in smaller screens */
+  max-width: 300px; /* Maximum width to maintain layout */
+  margin-bottom: 20px;
+  transition: transform 0.2s;
+}
+
+.auction-card:hover {
+  transform: scale(1.02); /* Slightly scale up on hover for effect */
+}
+
+.auction-card input,
+.auction-card textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.auction-card textarea {
+  height: 80px;
+}
+
+.auction-card button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.auction-card button:hover {
+  background-color: #0056b3;
+}
+
+.auction-card strong {
+  font-size: 1.2em;
+  color: #333;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+/* ProfilePage.css */
+.auction-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.auction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.icon {
+  cursor: pointer;
+  margin-left: 10px;
+  color: #007bff;
+}
+
+.icon:hover {
+  color: #0056b3;
+}
+
+.auction-edit {
+  display: flex;
+  flex-direction: column;
+}

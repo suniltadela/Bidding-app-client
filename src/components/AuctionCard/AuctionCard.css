@@ -69,6 +69,11 @@
     color: black;                 /* Color for current bid (green) */              /* Bold text for current bid */
     margin-top: 5px;                /* Space above current bid */
   }
+  .time-left{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+  }
   
   /* Button Styling */
   .auction-card button {

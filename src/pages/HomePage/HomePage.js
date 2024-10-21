@@ -14,16 +14,11 @@ const HomePage = () => {
 
   useEffect(() => {
     async function fetchAuctions() {
-      const response = await axios.get('http://localhost:3000/api/auctions/');
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/auctions/`);
       dispatch(setAuctions(response.data));
     }
     fetchAuctions();
   }, [dispatch]);
-
-  // Console logs for debugging
-  console.log('User:', user);
-  console.log('Is Logged In:', isLoggedIn);
-  console.log('Auctions:', auctions);
 
   return (
     <div className="home-page">

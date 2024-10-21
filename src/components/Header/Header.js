@@ -7,7 +7,8 @@ import './Header.css'; // Import the CSS for styling
 const Header = () => {
   const dispatch = useDispatch(); // Initialize dispatch
   const navigate = useNavigate(); // To navigate after logout
-  const user = useSelector((state) => state.auth.user); // Get user state from Redux
+  // const user = useSelector((state) => state.auth.user); // Get user state from Redux
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const handleLogout = () => {
     dispatch(logout()); // Dispatch the logout action
@@ -21,7 +22,7 @@ const Header = () => {
       <nav>
         <ul className="nav-links">
           <li><Link to="/">Home</Link></li>
-          {user ? (
+          {isLoggedIn ? (
             <>
               <li><Link to="/profile">Profile</Link></li>
               <li><button onClick={handleLogout} className="logout-button">Logout</button></li>
