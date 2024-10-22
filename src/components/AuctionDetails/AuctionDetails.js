@@ -15,7 +15,7 @@ const AuctionDetails = ({ auction }) => {
   const handlePlaceBid = async () => {
     try {
       // Validate if bid is higher than both the current bid and minimum bid
-      if (bidAmount <= currentBid || bidAmount < auction.minimumBid) {
+      if (bidAmount <= currentBid || bidAmount < auction.startingBid) {
         setError('Your bid must be equal to or higher than both the minimum bid and the current bid.');
         setSuccess(null);
         return;
